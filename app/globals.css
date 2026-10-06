@@ -119,3 +119,6 @@ section[id], main[id] { scroll-margin-top: 90px; }
 .button-lime:hover { background: #1261d8; }
 .floating-contact, .energy-band { border-color: #1d6ee8; }
 .portfolio-filters button[aria-pressed=true], .viewer-tabs button[aria-selected=true] { background: #1d6ee8; border-color: #1d6ee8; color: #fff; }
+
+.original-brand-logo { width: 48px; height: auto; display: block; flex-shrink: 0; object-fit: contain; }
+@media (max-width: 640px) { .original-brand-logo { width: 38px; } }
