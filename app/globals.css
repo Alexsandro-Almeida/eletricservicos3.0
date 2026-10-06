@@ -151,3 +151,33 @@ section[id], main[id] { scroll-margin-top: 90px; }
 @media (max-width: 1100px) { .founder-layout { gap: 45px; }.founder-visual { height: 490px; } }
 @media (max-width: 850px) { .founder-layout { gap: 30px; }.founder-visual { height: 450px; }.founder-copy h2 { font-size: 40px; }.founder-copy blockquote { font-size: 20px; }.founder-intro { font-size: 12px; } }
 @media (max-width: 640px) { .founder-section { padding: 60px 0; }.founder-layout { grid-template-columns: 1fr; gap: 35px; }.founder-copy { order: 0; }.founder-visual { order: 1; height: 430px; max-width: 420px; width: 100%; margin-inline: auto; }.founder-portrait { inset: 38px 10px 0; order: initial; margin: 0; }.founder-copy h2 { font-size: 43px; letter-spacing: -1.8px; }.founder-intro { font-size: 14px; }.founder-copy blockquote { font-size: 23px; margin-block: 25px; }.founder-photo-label { left: 15px; right: 15px; bottom: 15px; padding: 15px; }.founder-blueprint > span { font-size: 8px; } }
+
+/* Camada visual de tecnologia e energia */
+.hero-section { background: radial-gradient(ellipse at 80% 20%,#1666d32b,transparent 55%),#081b38; }
+.hero-copy h1 > span:first-of-type { text-shadow: 0 0 45px #448fff35; }
+.hero-photo { box-shadow: inset 0 0 50px #348dff30; }
+.hero-tech-card { border: 1px solid #93bcf6; background: #eef6fff0; backdrop-filter: blur(14px); }
+.button-lime { box-shadow: 0 4px 22px #1d6ee829; }
+.button-lime:hover { box-shadow: 0 8px 30px #1d6ee84d; }
+.service-card { position: relative; overflow: hidden; transition: background .25s,box-shadow .25s; }
+.service-card:hover { background: #f2f7ff; box-shadow: inset 0 3px #1d6ee8; }
+.portfolio-image { border-radius: 8px; border-color: #4387df30; }
+.portfolio-card:hover .portfolio-image,.portfolio-card:focus-visible .portfolio-image { box-shadow: 0 0 0 1px #76baff70,0 12px 35px #1675ea20; }
+.field-photo { border-radius: 6px; }
+.founder-section { position: relative; isolation: isolate; background: radial-gradient(ellipse at 10% 40%,#dcecff,transparent 55%),linear-gradient(135deg,#f7faff,#fff 70%); }
+.founder-section::before { content: ''; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(#1d6ee807 1px,transparent 1px),linear-gradient(90deg,#1d6ee807 1px,transparent 1px); background-size: 54px 54px; mask-image: linear-gradient(90deg,#000,transparent 75%); pointer-events: none; }
+.founder-visual { background: radial-gradient(ellipse at 50% 35%,#2474c7 0%,#103d79 45%,#061a39 100%); border: 1px solid #77b9ff80; box-shadow: 0 24px 60px #10488025,0 0 0 7px #dfeeff80; }
+.founder-visual::after { content: ''; position: absolute; inset: 12px; border: 1px solid #a8d7ff30; border-radius: 16px; pointer-events: none; }
+.founder-blueprint .circuit-drawing { opacity: .55; }
+.future-orbit { position: absolute; width: 360px; height: 360px; top: 58px; left: 50%; margin-left: -180px; border: 1px dashed #9cd4ff60; border-radius: 50%; animation: orbit 55s linear infinite; }
+.future-orbit::before,.future-orbit::after { content: ''; position: absolute; width: 7px; height: 7px; top: 47px; left: 45px; border-radius: 50%; background: #d4edff; box-shadow: 0 0 14px #80c6ff; }
+.future-orbit::after { top: auto; left: auto; right: 45px; bottom: 47px; }
+.future-scan { position: absolute; top: 12%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg,transparent,#9cd4ff80,transparent); box-shadow: 0 0 18px #81bfff60; animation: scan 9s ease-in-out infinite; }
+.future-coordinate { position: absolute; top: 66px; right: 20px; font: 7px var(--font-geist-mono),monospace; line-height: 1.9; letter-spacing: 1px; text-align: right; color: #c5e5ff80; }
+.founder-photo-label { background: #fffffff0; border: 1px solid #fff; backdrop-filter: blur(18px); }
+.founder-copy h2 > span { background: linear-gradient(110deg,#114fbc,#287ff0); background-clip: text; -webkit-text-fill-color: transparent; }
+.founder-principles span { border: 1px solid #1d6ee820; padding: 9px 12px; border-radius: 6px; background: #ffffffa0; }
+.engineering-form { border-radius: 10px; background: linear-gradient(145deg,#173c65,#102a4c); box-shadow: 0 20px 60px #03152f30; }
+@keyframes orbit { to { transform: rotate(360deg); } }
+@keyframes scan { 50% { top: 85%; opacity: .3; } }
+@media (prefers-reduced-motion: reduce) { .future-orbit,.future-scan { animation: none; } }
