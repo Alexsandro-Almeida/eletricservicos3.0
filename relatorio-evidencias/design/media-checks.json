@@ -1,0 +1,257 @@
+[
+  {
+    "path": "/assets/videos/BLOCOQUADRO3D-Model.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/BLOCOQUADRO3D-Model.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-1.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "path": "/assets/videos/PROJETOELETRICODESPDAEXTERNOGALPAO.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/PROJETOELETRICODESPDAEXTERNOGALPAO.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-2.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "path": "/assets/videos/PROJETOELETRICOSTUDIOBALLET.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/PROJETOELETRICOSTUDIOBALLET.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-3.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "path": "/assets/videos/PROJETOELETRICOPRACACOBERTA.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/PROJETOELETRICOPRACACOBERTA.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-4.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "path": "/assets/videos/PROJETOELETRICOPAV01.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/PROJETOELETRICOPAV01.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-5.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "path": "/assets/videos/PROJETODESPDA.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/PROJETODESPDA.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-6.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "path": "/assets/videos/DIAGRAMAUNIFILARUFTOFFGRID.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/DIAGRAMAUNIFILARUFTOFFGRID.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-7.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "path": "/assets/videos/PROJETOSISTEMASOLARONGRID.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/PROJETOSISTEMASOLARONGRID.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-8.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "path": "/assets/videos/PROJETOELETRICOALDEIAMURATU-SPDA.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/PROJETOELETRICOALDEIAMURATU-SPDA.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-9.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "path": "/assets/videos/PROJETOELETRICOSUBESTACAOAEREA225KVA.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/PROJETOELETRICOSUBESTACAOAEREA225KVA.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-10.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "path": "/assets/videos/PROJETOELETRICOALDEIAMURATU-DIMENSIONAMENTODECIRCUITOSBT.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/PROJETOELETRICOALDEIAMURATU-DIMENSIONAMENTODECIRCUITOSBT.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-11.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "path": "/assets/videos/PROJETOELETRICO-TERREO.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/PROJETOELETRICO-TERREO.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-12.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "path": "/assets/videos/PROJETOELETRICO-SUBSOLO.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/PROJETOELETRICO-SUBSOLO.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-13.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "path": "/assets/videos/PROJETOELETRICOCROQUIGEOREFERENCIA.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/PROJETOELETRICOCROQUIGEOREFERENCIA.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-14.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "path": "/assets/videos/PROJETOELETRICOPRACAARLIVRE.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/PROJETOELETRICOPRACAARLIVRE.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-15.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "path": "/assets/videos/PROJETOELETRICOPRAINHAARTIFICIAL.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/PROJETOELETRICOPRAINHAARTIFICIAL.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-16.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "path": "/assets/videos/PROJETOELETRICOALDEIAMURATU-CHAVEDETRANSFERENCIA.mp4",
+    "status": 200,
+    "type": "video/mp4"
+  },
+  {
+    "path": "/assets/projects/pdf/PROJETOELETRICOALDEIAMURATU-CHAVEDETRANSFERENCIA.pdf",
+    "status": 200,
+    "type": "application/pdf"
+  },
+  {
+    "path": "/assets/previews/project-17.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  }
+]
