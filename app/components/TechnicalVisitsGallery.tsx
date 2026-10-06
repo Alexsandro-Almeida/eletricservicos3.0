@@ -1,225 +1,62 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight, Camera } from 'lucide-react';
+import AccessibleDialog from './AccessibleDialog';
 
-const visitasData = [
-  {
-    id: 1,
-    image: 'assets/visitas/galary.jpg',
-    title: '',
-    description: '',
-    date: '',
-  },
-  {
-    id: 2,
-    image: '/assets/visitas/galary2.webp',
-    title: '',
-    description: '',
-    date: '',
-  },
-  {
-    id: 3,
-    image: '/assets/visitas/galary4.jpg',
-    title: '',
-    description: '',
-    date: '',
-  },
-  {
-    id: 4,
-    image: '/assets/visitas/galary15.jpg',
-    title: '',
-    description: '',
-    date: '',
-  },
-  {
-    id: 5,
-    image: '/assets/visitas/galary19.jpg',
-    title: '',
-    description: '',
-    date: '',
-  },
-  {
-    id: 6,
-    image: '/assets/visitas/galary16.jpg',
-    title: '',
-    description: '',
-    date: '',
-  },
-  {
-    id: 7,
-    image: '/assets/visitas/galary9.jpg',
-    title: '',
-    description: '',
-    date: '',
-  },
-  {
-    id: 8,
-    image: '/assets/visitas/galary20.jpeg',
-    title: '',
-    description: '',
-    date: '',
-  },
+const visits = [
+  { image: '/assets/visitas/galary.jpg', title: 'Visita técnica — registro 1' },
+  { image: '/assets/visitas/galary2.webp', title: 'Visita técnica — registro 2' },
+  { image: '/assets/visitas/galary4.jpg', title: 'Visita técnica — registro 3' },
+  { image: '/assets/visitas/galary15.jpg', title: 'Visita técnica — registro 4' },
+  { image: '/assets/visitas/galary19.jpg', title: 'Visita técnica — registro 5' },
+  { image: '/assets/visitas/galary16.jpg', title: 'Visita técnica — registro 6' },
+  { image: '/assets/visitas/galary9.jpg', title: 'Visita técnica — registro 7' },
+  { image: '/assets/visitas/galary20.jpeg', title: 'Visita técnica — registro 8' },
 ];
 
 export default function TechnicalVisitsGallery() {
-  const [selectedImage, setSelectedImage] = useState<typeof visitasData[0] | null>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const openLightbox = (visita: typeof visitasData[0], index: number) => {
-    setSelectedImage(visita);
-    setCurrentIndex(index);
-  };
-
-  const closeLightbox = () => {
-    setSelectedImage(null);
-  };
-
-  const goToPrevious = () => {
-    const newIndex = currentIndex === 0 ? visitasData.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
-    setSelectedImage(visitasData[newIndex]);
-  };
-
-  const goToNext = () => {
-    const newIndex = currentIndex === visitasData.length - 1 ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-    setSelectedImage(visitasData[newIndex]);
-  };
-
+  const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+  const selected = currentIndex === null ? null : visits[currentIndex];
+  const navigate = (direction: number) => setCurrentIndex((index) => index === null ? null : (index + direction + visits.length) % visits.length);
   return (
-    <>
-      <section className="relative px-4 py-24 bg-gradient-to-b from-dark via-navy/5 to-dark">
-        <div className="mx-auto max-w-7xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-16 text-center"
-          >
-            <div className="mb-4 flex items-center justify-center gap-3">
-              <Camera className="h-10 w-10 text-navy" />
-              <h2 className="text-4xl font-bold text-white md:text-5xl">
-                Galeria de Visitas Técnicas
-              </h2>
-            </div>
-            <div className="mx-auto h-1 w-24 bg-navy"></div>
-            <p className="mt-6 text-lg text-gray-300">
-              Acompanhe nosso trabalho em campo
-            </p>
-          </motion.div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {visitasData.map((visita, index) => (
-              <motion.div
-                key={visita.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="group relative overflow-hidden rounded-lg cursor-pointer aspect-square"
-                onClick={() => openLightbox(visita, index)}
-              >
-                <img
-                  src={visita.image}
-                  alt={visita.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                
-                <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/60 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
-                
-                <div className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 className="text-lg font-bold text-white mb-1">
-                    {visita.title}
-                  </h3>
-                  <p className="text-sm text-gray-300 mb-1">
-                    {visita.description}
-                  </p>
-                  <p className="text-xs text-navy font-semibold">
-                    {visita.date}
-                  </p>
-                </div>
-
-                <div className="absolute top-3 right-3 bg-navy/80 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Camera className="h-5 w-5 text-white" />
-                </div>
-
-                <div className="absolute inset-0 border-2 border-navy opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg" />
-              </motion.div>
-            ))}
-          </div>
+    <section id="visitas" className="relative bg-gradient-to-b from-dark via-navy/5 to-dark px-4 py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-3xl font-bold text-white md:text-5xl">Galeria de Visitas Técnicas</h2>
+          <div className="mx-auto h-1 w-24 bg-navy" />
+          <p className="mt-6 text-lg text-gray-300">Acompanhe nosso trabalho em campo</p>
         </div>
-      </section>
-
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-dark/95 backdrop-blur-sm p-4"
-            onClick={closeLightbox}
-          >
-            <button
-              onClick={closeLightbox}
-              className="absolute right-4 top-4 z-10 rounded-full bg-navy/80 p-3 text-white transition-all hover:bg-navy hover:scale-110"
-            >
-              <X size={28} />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {visits.map((visit, index) => (
+            <button type="button" key={visit.image} onClick={() => setCurrentIndex(index)} aria-label={`Ampliar ${visit.title.toLowerCase()}`}
+              className="group relative aspect-square overflow-hidden rounded-lg border border-navy">
+              <Image src={visit.image} alt={visit.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform group-hover:scale-105" />
+              <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-dark to-transparent p-4 text-left text-sm text-white">{visit.title}</span>
+              <Camera aria-hidden="true" className="absolute right-3 top-3 rounded-full bg-dark/80 p-1 text-white" />
             </button>
-
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                goToPrevious();
-              }}
-              className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-navy/80 p-3 text-white transition-all hover:bg-navy hover:scale-110"
-            >
-              <ChevronLeft size={32} />
-            </button>
-
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                goToNext();
-              }}
-              className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-navy/80 p-3 text-white transition-all hover:bg-navy hover:scale-110"
-            >
-              <ChevronRight size={32} />
-            </button>
-
-            <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
-              className="relative max-h-[90vh] max-w-5xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img
-                src={selectedImage.image}
-                alt={selectedImage.title}
-                className="max-h-[80vh] w-auto rounded-lg border-4 border-navy shadow-2xl"
-              />
-              
-              <div className="mt-4 rounded-lg bg-navy/90 backdrop-blur-sm p-6 text-center">
-                <h3 className="mb-2 text-2xl font-bold text-white">
-                  {selectedImage.title}
-                </h3>
-                <p className="mb-2 text-lg text-gray-200">
-                  {selectedImage.description}
-                </p>
-                <p className="text-sm font-semibold text-blue-300">
-                  {selectedImage.date}
-                </p>
-                <p className="mt-3 text-xs text-gray-400">
-                  Foto {currentIndex + 1} de {visitasData.length}
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
+          ))}
+        </div>
+      </div>
+      <AccessibleDialog open={selected !== null} onClose={() => setCurrentIndex(null)} labelledBy="visit-title" className="w-[calc(100%-2rem)] max-w-5xl rounded-xl border border-navy bg-dark text-white">
+        {selected && (
+          <div className="p-4">
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <h3 id="visit-title" className="text-lg font-semibold">{selected.title}</h3>
+              <button type="button" onClick={() => setCurrentIndex(null)} aria-label="Fechar fotografia" className="rounded-full bg-navy p-2"><X /></button>
+            </div>
+            <div className="relative h-[60dvh]">
+              <Image src={selected.image} alt={selected.title} fill sizes="90vw" className="object-contain" />
+            </div>
+            <div className="mt-4 flex items-center justify-between gap-3">
+              <button type="button" onClick={() => navigate(-1)} aria-label="Fotografia anterior" className="rounded-full bg-navy p-3"><ChevronLeft /></button>
+              <p role="status" aria-live="polite">Foto {(currentIndex ?? 0) + 1} de {visits.length}</p>
+              <button type="button" onClick={() => navigate(1)} aria-label="Próxima fotografia" className="rounded-full bg-navy p-3"><ChevronRight /></button>
+            </div>
+          </div>
         )}
-      </AnimatePresence>
-    </>
+      </AccessibleDialog>
+    </section>
   );
 }

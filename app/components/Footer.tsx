@@ -1,5 +1,3 @@
-'use client';
-
 import { Mail, Phone } from 'lucide-react';
 
 export default function Footer() {
@@ -20,17 +18,17 @@ export default function Footer() {
             <h4 className="mb-4 font-semibold text-white">Navegação</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <a href="#sobre" className="hover:text-navy transition-colors">
+                <a href="#sobre" className="break-all hover:text-blue-300 transition-colors">
                   Sobre
                 </a>
               </li>
               <li>
-                <a href="#projetos" className="hover:text-navy transition-colors">
+                <a href="#projetos" className="break-all hover:text-blue-300 transition-colors">
                   Projetos
                 </a>
               </li>
               <li>
-                <a href="#contato" className="hover:text-navy transition-colors">
+                <a href="#contato" className="break-all hover:text-blue-300 transition-colors">
                   Contato
                 </a>
               </li>
@@ -44,7 +42,7 @@ export default function Footer() {
                 <Mail className="h-4 w-4 text-navy" />
                 <a
                   href="mailto:eletricservicosengenharia1946@gmail.com"
-                  className="hover:text-navy transition-colors"
+                  className="break-all hover:text-blue-300 transition-colors"
                 >
                   eletricservicosengenharia1946@gmail.com
                 </a>
@@ -53,7 +51,7 @@ export default function Footer() {
                 <Phone className="h-4 w-4 text-navy" />
                 <a
                   href="https://wa.me/5593992200097"
-                  className="hover:text-navy transition-colors"
+                  className="break-all hover:text-blue-300 transition-colors"
                 >
                   +55 93 9220-0097
                 </a>

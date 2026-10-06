@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        navy: '#001F3F',
+        navy: '#0869ca',
         dark: '#0A0A0A',
       },
     },

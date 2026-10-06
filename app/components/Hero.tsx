@@ -5,7 +5,7 @@ import { ChevronDown } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center px-4">
+    <section id="inicio" className="relative flex min-h-screen items-center justify-center px-4">
       <div className="relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

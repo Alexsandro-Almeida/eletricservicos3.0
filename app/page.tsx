@@ -1,8 +1,6 @@
-'use client';
-
 import Navbar from './components/Navbar';
 import ElectricGrid from './components/ElectricGrid';
-import ParticlesBackground from './components/ParticlesBackground';
+import VisualEffects from './components/VisualEffects';
 import Hero from './components/Hero';
 import About from './components/About';
 import Founder from './components/Founder';
@@ -18,7 +16,7 @@ export default function Home() {
     <>
       <Navbar />
       <ElectricGrid />
-      <ParticlesBackground />
+      <VisualEffects />
       <main className="relative">
         <Hero />
         <About />
@@ -27,8 +25,8 @@ export default function Home() {
         <TechnicalVisitsGallery />
         <Stats />
         <Contact />
-        <Footer />
       </main>
+      <Footer />
       <WhatsAppButton />
     </>
   );

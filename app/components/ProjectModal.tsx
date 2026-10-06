@@ -1,90 +1,37 @@
 'use client';
 
-import { useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, ExternalLink } from 'lucide-react';
+import AccessibleDialog from './AccessibleDialog';
 
 interface ProjectModalProps {
   isOpen: boolean;
   onClose: () => void;
-  project: {
-    title: string;
-    videoUrl: string;
-    pdfUrl: string;
-    description: string;
-  } | null;
+  project: { title: string; videoUrl: string; pdfUrl: string; description: string } | null;
 }
 
 export default function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
-
   if (!project) return null;
-
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-dark/95 p-4"
-          onClick={onClose}
-        >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative h-[90vh] w-full max-w-7xl overflow-hidden rounded-lg border-2 border-navy bg-dark"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={onClose}
-              className="absolute right-4 top-4 z-10 rounded-full bg-navy/80 p-2 text-white transition-colors hover:bg-navy"
-            >
-              <X size={24} />
-            </button>
-
-            <div className="flex h-full flex-col gap-4 p-6 lg:flex-row">
-              <div className="flex-1">
-                <h2 className="mb-4 text-3xl font-bold text-white">{project.title}</h2>
-                <video
-                  src={project.videoUrl}
-                  className="h-[50vh] w-full rounded-lg border border-navy object-cover lg:h-[calc(90vh-200px)]"
-                  controls
-                  autoPlay
-                  loop
-                />
-                <div className="mt-4 rounded-lg border border-navy bg-navy/20 p-4">
-                  <p className="text-sm leading-relaxed text-gray-300">{project.description}</p>
-                  <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-navy bg-navy/30 px-4 py-2 text-xs font-semibold text-white">
-                    <span className="h-2 w-2 rounded-full bg-green-400"></span>
-                    Conformidade NBR
-                  </div>
-                </div>
-              </div>
-
-              <div className="w-full lg:w-[450px]">
-                <h3 className="mb-2 text-lg font-semibold text-white">Planta Elétrica</h3>
-                <iframe
-                  src={project.pdfUrl}
-                  className="h-[40vh] w-full rounded-lg border border-navy lg:h-[calc(90vh-80px)]"
-                  title="PDF Viewer"
-                />
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <AccessibleDialog open={isOpen} onClose={onClose} labelledBy="project-title" className="w-[calc(100%-2rem)] max-w-7xl rounded-xl border border-navy bg-dark text-white">
+      <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-navy bg-dark p-4 md:p-6">
+        <h2 id="project-title" className="text-xl font-bold md:text-3xl">{project.title}</h2>
+        <button type="button" onClick={onClose} aria-label="Fechar projeto" className="shrink-0 rounded-full bg-navy p-2"><X /></button>
+      </div>
+      <div className="grid gap-6 p-4 md:p-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,450px)]">
+        <div className="min-w-0">
+          <video key={project.videoUrl} src={project.videoUrl} controls playsInline preload="metadata"
+            className="aspect-video w-full rounded-lg border border-navy bg-black object-contain">
+            Seu navegador não reproduz este vídeo. <a href={project.videoUrl}>Abrir vídeo</a>
+          </video>
+          <p className="mt-4 leading-relaxed text-gray-300">{project.description}</p>
+          <a href={project.videoUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-blue-300 underline">Abrir vídeo <ExternalLink size={16} /></a>
+        </div>
+        <div className="min-w-0">
+          <h3 className="mb-3 text-lg font-semibold">Documento do projeto</h3>
+          <a href={project.pdfUrl} target="_blank" rel="noopener noreferrer" className="mb-4 inline-flex items-center gap-2 text-blue-300 underline">Abrir PDF em nova aba <ExternalLink size={16} /></a>
+          <iframe src={project.pdfUrl} title={`Documento: ${project.title}`} className="h-[55dvh] min-h-72 w-full rounded-lg border border-navy" />
+        </div>
+      </div>
+    </AccessibleDialog>
   );
 }

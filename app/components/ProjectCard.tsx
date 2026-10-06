@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 interface ProjectCardProps {
@@ -15,26 +16,21 @@ export default function ProjectCard({ title, thumbnail, videoUrl, onClick }: Pro
   const [videoError, setVideoError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-    if (videoRef.current && !videoError) {
-      videoRef.current.play().catch(() => {
-        setVideoError(true);
-      });
-    }
-  };
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || videoError) return;
+    if (isHovered) void video.play().catch(() => { /* Playback may require a user gesture. */ });
+    else { video.pause(); }
+  }, [isHovered, videoError]);
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    if (videoRef.current && !videoError) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  };
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
 
   return (
-    <motion.div
-      className="relative h-[500px] w-full cursor-pointer overflow-hidden"
+    <motion.button
+      type="button"
+      aria-label={`Ver projeto: ${title}`}
+      className="text-left relative h-[500px] w-full cursor-pointer overflow-hidden"
       style={{
         transformStyle: 'preserve-3d',
       }}
@@ -47,22 +43,27 @@ export default function ProjectCard({ title, thumbnail, videoUrl, onClick }: Pro
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onFocus={handleMouseEnter}
+      onBlur={handleMouseLeave}
       onClick={onClick}
     >
       <div className="absolute inset-0 bg-navy/80 transition-opacity duration-300" 
            style={{ opacity: isHovered ? 0 : 1 }} />
       
-      <img
+      <Image
         src={thumbnail}
-        alt={title}
+        alt=""
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
         className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300"
         style={{ opacity: isHovered && !videoError ? 0 : 1 }}
       />
       
-      {!videoError && (
+      {isHovered && !videoError && (
         <video
           ref={videoRef}
           src={videoUrl}
+          preload="none"
           className="absolute inset-0 h-full w-full object-cover"
           loop
           muted
@@ -73,7 +74,7 @@ export default function ProjectCard({ title, thumbnail, videoUrl, onClick }: Pro
       )}
       
       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-dark via-dark/80 to-transparent p-8">
-        <h3 className="text-2xl font-bold text-white">{title}</h3>
+        <span className="text-2xl font-bold text-white">{title}</span>
       </div>
 
       <motion.div
@@ -82,6 +83,6 @@ export default function ProjectCard({ title, thumbnail, videoUrl, onClick }: Pro
           opacity: isHovered ? 1 : 0.5,
         }}
       />
-    </motion.div>
+    </motion.button>
   );
 }

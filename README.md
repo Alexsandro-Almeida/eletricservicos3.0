@@ -1,63 +1,61 @@
-# Eletric Serviços Engenharia - Site Institucional
+# Eletric Serviços Engenharia
 
-Site institucional desenvolvido com Next.js, Tailwind CSS e Framer Motion.
+Site institucional com Next.js App Router, React, TypeScript, Tailwind CSS, Framer Motion, Swiper e tsParticles. Inclui apresentação da empresa/fundador, 17 projetos com vídeos e PDFs, oito fotos de visitas técnicas, indicadores, contato e WhatsApp.
 
-## 🚀 Tecnologias
+## Executar
 
-- **Next.js 16** - Framework React para produção
-- **TypeScript** - Tipagem estática
-- **Tailwind CSS 4** - Framework CSS utilitário
-- **Framer Motion** - Biblioteca de animações
-- **Lucide React** - Ícones modernos
+Requer Node.js >=22.18; CI usa Node 24.
 
+```sh
+npm ci
+npm run dev
+```
 
-O site estará disponível em `eletricservicosengenharia.com.br`
+Produção:
 
-## 🎨 Paleta de Cores
+```sh
+npm run build
+npm run start
+```
 
-- **Azul Marinho:** #001F3F
-- **Preto:** #0A0A0A
-- **Branco:** #FFFFFF
+## Contato por email
 
-## 🎯 Funcionalidades
+Copie `.env.example` para `.env.local` e configure no servidor:
 
-### ✅ Cards de Projeto Interativos
-- Estado normal: Imagem com overlay azul marinho em formato skew
-- Estado hover: Card se "desentorta", aumenta de tamanho e reproduz vídeo automaticamente
+- `RESEND_API_KEY`: chave privada do Resend.
+- `CONTACT_FROM_EMAIL`: remetente de um domínio verificado no provedor.
+- `CONTACT_TO_EMAIL`: destinatário da empresa.
+- `CONTACT_TRUST_PROXY`: mantenha false, salvo se o proxy da hospedagem sobrescrever x-forwarded-for com um IP confiável.
 
-### ✅ Modal de Portfólio
-- Vídeo completo do projeto
-- Visualizador de PDF lateral para plantas elétricas
-- Descrição técnica e selo de conformidade NBR
+Nunca use prefixo NEXT_PUBLIC para credenciais. Reinicie o servidor após configurar. Integração via [API oficial do Resend](https://resend.com/docs/api-reference/emails/send-email).
 
-### ✅ Background Dinâmico
-- Grid elétrico sutil com degradê radial
+Sem configuração, o formulário retorna indisponibilidade e mantém os dados para que o visitante use email/WhatsApp. Sucesso significa aceitação pelo provedor; entrega na caixa postal deve ser acompanhada no painel do serviço. A integração foi testada com um provedor simulado, sem enviar emails reais.
 
-### ✅ Formulário de Contato
-- Envio para: eletricservicosengenharia1946@gmail.com
-- Validação de campos
+A API valida tipos, comprimentos, email e telefone; limita o corpo a 16 KiB, usa honeypot, verifica Origin quando presente e possui timeout de envio. Não registra dados pessoais no console. O limitador é **local à instância e volátil**: cinco tentativas/minuto por IP confiável ou 30/minuto globais sem proxy confiável. Para múltiplas instâncias, configure proteção compartilhada/limitação no gateway antes de produção com tráfego alto. Origin e honeypot não substituem proteção contra bots.
 
-### ✅ WhatsApp Flutuante
-- Botão fixo com link direto para: +55 93 9220-0097
+## Qualidade
 
-### ✅ Seção Sobre
-- Layout dinâmico destacando expertise em engenharia
+```sh
+npm run lint
+npm test
+npm run build
+npm audit
+```
 
-### ✅ Projetos em Execução
-- Galeria de obras em andamento com barra de progresso
+Os sete testes da API cobrem validação, origem, tamanho, configuração ausente, confirmação de envio, falhas do provedor e limite de tentativas. O workflow `.github/workflows/checks.yml` executa lint, testes, build e auditoria de produção em pushes e pull requests.
 
-## 📊 Performance
+## Interface e conteúdo
 
-O site foi otimizado para atingir Lighthouse Score 90+:
-- Compressão automática habilitada
-- Imagens otimizadas (WebP/AVIF)
-- Code splitting automático do Next.js
-- Lazy loading de componentes
+- Diálogos nativos com Escape, foco, bloqueio do fundo e rolagem interna.
+- Cards e galeria operáveis por teclado, controles com nomes acessíveis.
+- Imagens responsivas com next/image; vídeos de cards carregados apenas na interação.
+- Partículas carregadas dinamicamente e omitidas em movimento reduzido.
+- Carrossel manual com navegação acessível; animações respeitam movimento reduzido.
+- Tema CSS do Tailwind 4 em app/globals.css; a configuração TypeScript antiga não é a fonte ativa do tema.
+- SEO básico, Open Graph, canonical, robots.txt e sitemap.xml.
 
-## 📧 Contatos
+O domínio canônico é https://eletricservicosengenharia.com.br. Se a publicação usar outro domínio, ajuste layout.tsx, robots.ts e sitemap.ts. Hospede em ambiente compatível com o servidor Next.js; exportação estática pura não executa o formulário.
 
-- **Email:** eletricservicosengenharia1946@gmail.com
-- **WhatsApp:** +55 93 9220-0097
+Projetos/visitas e textos institucionais são estáticos no código. Rótulos numerados identificam as fotos sem inventar local/data. Miniaturas específicas, descrição técnica detalhada de cada projeto e comprovação dos indicadores/CREA devem ser fornecidas pela empresa. Os arquivos originais de vídeo/PDF foram preservados.
 
-
-Desenvolvido para Eletric Serviços Engenharia
+Não há pontuação Lighthouse garantida. O volume de mídia requer medição e eventual transcodificação antes de metas de performance. O relatório inicial está em RELATORIO_TECNICO.md; correções posteriores e pendências estão em CORRECOES.md.

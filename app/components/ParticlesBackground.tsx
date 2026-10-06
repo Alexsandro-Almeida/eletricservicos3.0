@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
-import type { Container, ISourceOptions } from '@tsparticles/engine';
+import type { ISourceOptions } from '@tsparticles/engine';
 
 export default function ParticlesBackground() {
   const [init, setInit] = useState(false);
@@ -16,9 +16,6 @@ export default function ParticlesBackground() {
     });
   }, []);
 
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container);
-  };
 
   const options: ISourceOptions = useMemo(
     () => ({
@@ -27,15 +24,15 @@ export default function ParticlesBackground() {
           value: 'transparent',
         },
       },
-      fpsLimit: 60,
+      fpsLimit: 30,
       interactivity: {
         events: {
           onClick: {
-            enable: true,
+            enable: false,
             mode: 'push',
           },
           onHover: {
-            enable: true,
+            enable: false,
             mode: 'grab',
           },
         },
@@ -53,10 +50,10 @@ export default function ParticlesBackground() {
       },
       particles: {
         color: {
-          value: '#001F3F',
+          value: '#0869ca',
         },
         links: {
-          color: '#001F3F',
+          color: '#0869ca',
           distance: 150,
           enable: true,
           opacity: 0.2,
@@ -76,7 +73,7 @@ export default function ParticlesBackground() {
           density: {
             enable: true,
           },
-          value: 80,
+          value: 40,
         },
         opacity: {
           value: 0.3,
@@ -97,9 +94,8 @@ export default function ParticlesBackground() {
     return (
       <Particles
         id="tsparticles"
-        particlesLoaded={particlesLoaded}
         options={options}
-        className="fixed inset-0 -z-5"
+        className="pointer-events-none fixed inset-0 -z-5"
       />
     );
   }

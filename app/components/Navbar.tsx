@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { hover, motion } from 'framer-motion';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
@@ -17,7 +18,7 @@ export default function Navbar() {
   }, []);
 
   const menuItems = [
-    { label: 'Início', href: '#' },
+    { label: 'Início', href: '#inicio' },
     { label: 'Sobre', href: '#sobre' },
     { label: 'Projetos', href: '#projetos' },
     { label: 'Contato', href: '#contato' },
@@ -32,14 +33,9 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
-        <div className="text-2xl font-bold text-white">
-          
-          <img style={{
-            width: '10%',
-            borderRadius: '100%',
-          }} src="/assets/logos/logo1.jpg" alt="logo" />
-          
-        </div>
+        <a href="#inicio" aria-label="Eletric Serviços Engenharia — início" className="shrink-0">
+          <Image src="/assets/logos/logo1.jpg" alt="Eletric Serviços Engenharia" width={64} height={64} className="h-14 w-14 rounded-full object-cover" />
+        </a>
 
         <div className="hidden items-center gap-8 md:flex">
           {menuItems.map((item) => (
@@ -60,6 +56,10 @@ export default function Navbar() {
         </div>
 
         <button
+          type="button"
+          aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="md:hidden text-white"
         >
@@ -72,6 +72,7 @@ export default function Navbar() {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
+          id="mobile-menu"
           className="border-t border-navy bg-dark/95 backdrop-blur-lg md:hidden"
         >
           <div className="flex flex-col gap-4 px-4 py-6">

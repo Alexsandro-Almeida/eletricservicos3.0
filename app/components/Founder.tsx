@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Award, Briefcase, GraduationCap } from 'lucide-react';
 
@@ -31,13 +32,13 @@ export default function Founder() {
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-navy to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
               <div className="relative">
-                <img
+                <Image
                   src="/assets/founder/foto-fundador.png"
                   alt="Fundador da Eletric Serviços Engenharia"
                   className="relative rounded-lg border-4 border-navy w-full max-w-md h-auto object-cover shadow-2xl"
-                  onError={(e) => {
-                    e.currentTarget.src = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=600&fit=crop';
-                  }}
+                  width={600}
+                  height={600}
+                  sizes="(max-width: 1024px) 90vw, 448px"
                 />
                 <div className="absolute -bottom-6 -right-6 bg-navy text-white p-4 rounded-lg shadow-xl border-2 border-white">
                   <p className="text-sm font-semibold">Desde 2019</p>
@@ -98,12 +99,12 @@ export default function Founder() {
 
             <div className="mt-8 p-6 rounded-lg bg-gradient-to-r from-navy/20 to-transparent border-l-4 border-navy">
               <p className="text-lg italic text-gray-300">
-                "A engenharia elétrica não é apenas sobre cabos e circuitos. 
-                É sobre iluminar vidas, dar poder aos sonhos e construir um futuro mais seguro."
+                &ldquo;A engenharia elétrica não é apenas sobre cabos e circuitos.
+                É sobre iluminar vidas, dar poder aos sonhos e construir um futuro mais seguro.&rdquo;
 
                 <br />
                 <br />
-                "Onde há eletricidade, haverá luz no futuro."
+                &ldquo;Onde há eletricidade, haverá luz no futuro.&rdquo;
               </p>
               <p className="mt-3 text-sm font-semibold text-navy">
                 - Ruan Lastrine

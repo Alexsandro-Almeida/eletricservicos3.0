@@ -7,15 +7,15 @@ export default function WhatsAppButton() {
   const phoneNumber = '5593992200097';
   const message = 'Olá! Gostaria de mais informações sobre os serviços da Eletric Serviços Engenharia.';
   
-  const handleClick = () => {
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
-  };
+  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   return (
-    <motion.button
-      onClick={handleClick}
-      className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-white shadow-2xl transition-all hover:bg-green-600 hover:scale-110"
+    <motion.a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Conversar com a Eletric pelo WhatsApp"
+      className="fixed bottom-6 right-6 z-40 flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-white shadow-2xl transition-all hover:bg-green-600 hover:scale-110"
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ delay: 1, type: 'spring', stiffness: 260, damping: 20 }}
@@ -34,6 +34,6 @@ export default function WhatsAppButton() {
           ease: "easeInOut",
         }}
       />
-    </motion.button>
+    </motion.a>
   );
 }

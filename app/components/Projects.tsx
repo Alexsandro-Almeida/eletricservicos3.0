@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination, A11y } from 'swiper/modules';
 import ProjectCard from './ProjectCard';
 import ProjectModal from './ProjectModal';
 
@@ -18,7 +18,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/BLOCOQUADRO3D-Model.mp4',
     pdfUrl: '/assets/projects/pdf/BLOCOQUADRO3D-Model.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/PROJETOELETRICODESPDAEXTERNOGALPAO.mp4',
     pdfUrl: '/assets/projects/pdf/PROJETOELETRICODESPDAEXTERNOGALPAO.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/PROJETOELETRICOSTUDIOBALLET.mp4',
     pdfUrl: '/assets/projects/pdf/PROJETOELETRICOSTUDIOBALLET.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/PROJETOELETRICOPRACACOBERTA.mp4',
     pdfUrl: '/assets/projects/pdf/PROJETOELETRICOPRACACOBERTA.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
   
   {
@@ -51,7 +51,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/PROJETOELETRICOPAV01.mp4',
     pdfUrl: '/assets/projects/pdf/PROJETOELETRICOPAV01.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
   {
     id: 6,
@@ -59,7 +59,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/PROJETODESPDA.mp4',
     pdfUrl: '/assets/projects/pdf/PROJETODESPDA.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
   {
     id: 7,
@@ -67,7 +67,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/DIAGRAMAUNIFILARUFTOFFGRID.mp4',
     pdfUrl: '/assets/projects/pdf/DIAGRAMAUNIFILARUFTOFFGRID.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
   {
     id: 8,
@@ -75,7 +75,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/PROJETOSISTEMASOLARONGRID.mp4',
     pdfUrl: '/assets/projects/pdf/PROJETOSISTEMASOLARONGRID.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
   {
     id: 9,
@@ -83,7 +83,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/PROJETOELETRICOALDEIAMURATU-SPDA.mp4',
     pdfUrl: '/assets/projects/pdf/PROJETOELETRICOALDEIAMURATU-SPDA.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
 
   {
@@ -92,7 +92,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/PROJETOELETRICOSUBESTACAOAEREA225KVA.mp4',
     pdfUrl: '/assets/projects/pdf/PROJETOELETRICOSUBESTACAOAEREA225KVA.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
 
   {
@@ -101,7 +101,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/PROJETOELETRICOALDEIAMURATU-DIMENSIONAMENTODECIRCUITOSBT.mp4',
     pdfUrl: '/assets/projects/pdf/PROJETOELETRICOALDEIAMURATU-DIMENSIONAMENTODECIRCUITOSBT.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
 
   {
@@ -110,7 +110,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/PROJETOELETRICO-TERREO.mp4',
     pdfUrl: '/assets/projects/pdf/PROJETOELETRICO-TERREO.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
 
   {
@@ -119,7 +119,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/PROJETOELETRICO-SUBSOLO.mp4',
     pdfUrl: '/assets/projects/pdf/PROJETOELETRICO-SUBSOLO.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
 
   {
@@ -128,7 +128,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/PROJETOELETRICOCROQUIGEOREFERENCIA.mp4',
     pdfUrl: '/assets/projects/pdf/PROJETOELETRICOCROQUIGEOREFERENCIA.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
 
   {
@@ -137,7 +137,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/PROJETOELETRICOPRACAARLIVRE.mp4',
     pdfUrl: '/assets/projects/pdf/PROJETOELETRICOPRACAARLIVRE.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
 
   {
@@ -146,7 +146,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/PROJETOELETRICOPRAINHAARTIFICIAL.mp4',
     pdfUrl: '/assets/projects/pdf/PROJETOELETRICOPRAINHAARTIFICIAL.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
 
   {
@@ -155,7 +155,7 @@ const projectsData = [
     thumbnail: '/assets/videos/Thumbnail.png',
     videoUrl: '/assets/videos/PROJETOELETRICOALDEIAMURATU-CHAVEDETRANSFERENCIA.mp4',
     pdfUrl: '/assets/projects/pdf/PROJETOELETRICOALDEIAMURATU-CHAVEDETRANSFERENCIA.pdf',
-    description: '',
+    description: 'Apresentação do projeto e documento técnico disponíveis abaixo.',
   },
   
 ];
@@ -190,12 +190,12 @@ export default function Projects() {
           </motion.div>
 
           <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
+            modules={[Navigation, Pagination, A11y]}
             spaceBetween={40}
             slidesPerView={1}
             navigation
             pagination={{ clickable: true }}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            a11y={{ prevSlideMessage: 'Projeto anterior', nextSlideMessage: 'Próximo projeto', paginationBulletMessage: 'Ir para projeto {{index}}', slideLabelMessage: 'Projeto {{index}} de {{slidesLength}}' }}
             loop={true}
             breakpoints={{
               640: {

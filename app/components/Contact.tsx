@@ -10,13 +10,19 @@ export default function Contact() {
     email: '',
     phone: '',
     message: '',
+    website: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  const [errorMessage, setErrorMessage] = useState('');
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setErrorMessage('');
 
     try {
       const response = await fetch('/api/contact', {
@@ -29,15 +35,18 @@ export default function Contact() {
 
       if (response.ok) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', phone: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', message: '', website: '' });
       } else {
+        const result = await response.json().catch(() => null);
+        setErrorMessage(result?.error || 'Não foi possível enviar. Tente novamente ou use o WhatsApp.');
         setSubmitStatus('error');
       }
-    } catch (error) {
+    } catch {
+      setErrorMessage('Falha de conexão. Tente novamente ou use o WhatsApp.');
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus('idle'), 5000);
+
     }
   };
 
@@ -84,7 +93,7 @@ export default function Contact() {
                   <h4 className="mb-1 font-semibold text-white">Email</h4>
                   <a
                     href="mailto:eletricservicosengenharia1946@gmail.com"
-                    className="text-gray-300 hover:text-navy"
+                    className="break-all text-gray-300 hover:text-blue-300"
                   >
                     eletricservicosengenharia1946@gmail.com
                   </a>
@@ -99,7 +108,7 @@ export default function Contact() {
                   <h4 className="mb-1 font-semibold text-white">WhatsApp</h4>
                   <a
                     href="https://wa.me/5593992200097"
-                    className="text-gray-300 hover:text-navy"
+                    className="break-all text-gray-300 hover:text-blue-300"
                   >
                     +55 93 9220-0097
                   </a>
@@ -127,7 +136,12 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             onSubmit={handleSubmit}
             className="space-y-6"
+            aria-busy={isSubmitting}
           >
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="website">Website</label>
+              <input id="website" name="website" value={formData.website} onChange={handleChange} tabIndex={-1} autoComplete="off" />
+            </div>
             <div>
               <label htmlFor="name" className="mb-2 block text-sm font-semibold text-white">
                 Nome
@@ -136,6 +150,7 @@ export default function Contact() {
                 type="text"
                 id="name"
                 name="name"
+                autoComplete="name" minLength={2} maxLength={120}
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -152,6 +167,7 @@ export default function Contact() {
                 type="email"
                 id="email"
                 name="email"
+                autoComplete="email" maxLength={254}
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -168,6 +184,7 @@ export default function Contact() {
                 type="tel"
                 id="phone"
                 name="phone"
+                autoComplete="tel" maxLength={30} pattern="[+0-9 ().-]{8,30}"
                 value={formData.phone}
                 onChange={handleChange}
                 required
@@ -183,6 +200,7 @@ export default function Contact() {
               <textarea
                 id="message"
                 name="message"
+                minLength={10} maxLength={5000}
                 value={formData.message}
                 onChange={handleChange}
                 required
@@ -192,6 +210,7 @@ export default function Contact() {
               />
             </div>
 
+            <p className="text-sm text-gray-400">Usaremos seus dados para responder à sua solicitação. Evite enviar informações sensíveis.</p>
             <button
               type="submit"
               disabled={isSubmitting}
@@ -211,9 +230,10 @@ export default function Contact() {
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
+                role="status"
                 className="text-center text-green-400"
               >
-                Mensagem enviada com sucesso! Entraremos em contato em breve.
+                Mensagem aceita para envio! Entraremos em contato em breve.
               </motion.p>
             )}
 
@@ -221,9 +241,10 @@ export default function Contact() {
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
+                role="alert"
                 className="text-center text-red-400"
               >
-                Erro ao enviar mensagem. Por favor, tente novamente ou entre em contato pelo WhatsApp.
+                {errorMessage}
               </motion.p>
             )}
           </motion.form>
